@@ -23,7 +23,7 @@ from plugins.web_support import web_server
 
 import asyncio
 from pyrogram import idle
-from lazydeveloper import Lazydeveloper
+from plugins import Lazydeveloper
 from config import *
 
 PORT = "8080"
