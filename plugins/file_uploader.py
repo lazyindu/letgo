@@ -181,7 +181,7 @@ async def upload_to_streamtape(bot, update, path, server_name, ms, new_filename)
                 return
             else:
                 await data.message.reply_to_message.reply_text(
-                    f"<blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on StreamTape server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote>",
+                    f"<spoiler><blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on StreamTape server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote></spoiler>",
                     parse_mode=enums.ParseMode.HTML,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(
@@ -245,7 +245,7 @@ async def upload_to_streamwish(bot, update, path, server_name, ms, new_filename)
 
                 await lzm.delete(True)
                 await data.message.reply_to_message.reply_text(
-                    f"<blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on StreamWish server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote>",
+                    f"<spoiler><blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on StreamWish server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote></spoiler>",
                     parse_mode=enums.ParseMode.HTML,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
@@ -315,7 +315,7 @@ async def upload_to_vidhide(bot, update, path, server_name, ms, new_filename):
                 # os.remove(the_media)
                 await lzm.delete()
                 await data.message.reply_to_message.reply_text(
-                    f"<blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on VidHide server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote>",
+                    f"<spoiler><blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on VidHide server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote></spoiler>",
                     parse_mode=enums.ParseMode.HTML,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
@@ -372,7 +372,7 @@ async def upload_to_playerx(bot, update, path, server_name, ms, new_filename):
 
                 await lzm.delete(True)
                 await data.message.reply_to_message.reply_text(
-                    f"<blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on Playerx server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote>",
+                    f"<spoiler><blockquote><b> {server_name} </b></blockquote>\n<b>Uploaded on Playerx server</b> ❤\n<blockquote><b>📂File Name:</b> {tempfilename} </blockquote></spoiler>",
                     parse_mode=enums.ParseMode.HTML,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
@@ -541,11 +541,12 @@ async def upload_to_allserver(bot, update, path, server_name, ms, new_filename):
         #  uploaded on PLayerx
         await lazy_mv.edit(
             text=(
+                "<spoiler>"
                 "<b>[ 🚀 StreamTape</b> => <i>✅ Upload Done</i>\n"
                 "<b>[ ☢ StreamWish</b> => <i>✅ Upload Done</i>\n"
                 "<b>[ 🍟 VidHide </b> =>>>> <i>✅ Upload Done</i>\n"
                 "<b>[ ▶ PlayerX </b> =>>>> <i>✅ Upload Done</i>\n\n"
-                f"<blockquote><b>📂File Name</b>: {tempfilename}</blockquote>"
+                f"<blockquote><b>📂File Name</b>: {tempfilename}</blockquote></spoiler>"
             ),
             parse_mode=enums.ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup([
