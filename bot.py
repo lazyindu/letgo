@@ -16,6 +16,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 import os
 from pyrogram import  __version__
 from pyrogram.raw.all import layer
+import glob
 
 
 from aiohttp import web
@@ -25,7 +26,12 @@ import asyncio
 from pyrogram import idle
 from plugins import Lazydeveloper
 from config import *
+import importlib
+import sys
+from pathlib import Path
 
+ppath = "plugins/*.py"
+files = glob.glob(ppath)
 PORT = "8080"
 Lazydeveloper.start()
 loop = asyncio.get_event_loop()
@@ -33,6 +39,17 @@ loop = asyncio.get_event_loop()
 async def Lazy_start():
     print('\n')
     print('🍟 Initalizing Server Bot ')
+    for name in files:
+        with open(name) as a:
+            patt = Path(a.name)
+            plugin_name = patt.stem.replace(".py", "")
+            plugins_dir = Path(f"plugins/{plugin_name}.py")
+            import_path = "plugins.{}".format(plugin_name)
+            spec = importlib.util.spec_from_file_location(import_path, plugins_dir)
+            load = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(load)
+            sys.modules["plugins." + plugin_name] = load
+            print("Lazy Imported => " + plugin_name)
     if not os.path.isdir(DOWNLOAD_DIR):
         os.makedirs(DOWNLOAD_DIR)
     bot_info = await Lazydeveloper.get_me()

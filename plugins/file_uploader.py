@@ -115,7 +115,7 @@ async def process_upload(bot, update):
     file_path = os.path.join(download_dir, new_filename)
     file = update.message.reply_to_message
 
-    ms = await update.message.edit(f"<b>⚙ Preparing to upload on {displaylazyserver}</b>\n\n<blockquote>📂 {new_filename} </blockquote>",
+    ms = await update.message.edit(f"<spoiler><b>⚙ Preparing to upload on {displaylazyserver}</b>\n\n<blockquote>📂 {new_filename} </blockquote></spoiler>",
                                    disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
     c_time = time.time()
 
@@ -600,7 +600,6 @@ async def lazycall(client, query: CallbackQuery):
             text=lazyvars.ABOUT_TXT.format(client.mention),
             disable_web_page_preview = True,
             reply_markup=InlineKeyboardMarkup( [[
-               #⚠️ don't change source code & source link ⚠️ #
                InlineKeyboardButton("👑 Contact Admin 👑", url="https://t.me/zonflix")
                ],[
                InlineKeyboardButton("🔒 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),

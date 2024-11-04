@@ -21,7 +21,7 @@ async def start(client, message):
         ]
         ])
     if START_PIC:
-        await message.reply_photo(START_PIC, caption=txt, reply_markup=button)       
+        await message.reply_photo(f"<spoiler>{START_PIC}</spoiler>", caption=txt, reply_markup=button, parse_mode=enums.ParseMode.HTML)       
     else:
         await message.reply_text(text=txt, reply_markup=button, disable_web_page_preview=True)
     
